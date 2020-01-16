@@ -9,7 +9,7 @@ Vis2.Graphics.Subtitle.Render("Press [F5] to highlight and copy anything on-scre
 F5:: MsgBox % OCR()    
 F6:: MsgBox % OCR([1300,360,620,400])
 F7::
-	text := OCR([1300,360,620,400])
+	text := OCR([1300,300,620,500])
 	MsgBox ocrResults:%text%
 	
 	;process the string:
