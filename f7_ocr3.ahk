@@ -27,7 +27,7 @@ F7::
 		;MsgBox, Color number %A_Index% is %this_color%.
 		translation:=GoogleTranslate(this_color)
 		translatedArray.Push(translation)
-		strForMsgBox = %strForMsgBox% %translation%
+		strForMsgBox = %strForMsgBox%`r`n%translation%
 	}
 	
 	MsgBox %strForMsgBox%
