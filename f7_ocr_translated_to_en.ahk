@@ -38,7 +38,7 @@ F7::
 #i:: ImageIdentify()    ; Label images
 ;Esc:: ExitApp
 
-
+;based on https://www.autohotkey.com/boards/viewtopic.php?t=63835
 
 ;TranslateThis= I am a bird
 ;MsgBox, % GoogleTranslate("今日の天気はとても良いです")
