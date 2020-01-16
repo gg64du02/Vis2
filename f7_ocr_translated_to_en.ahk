@@ -2,7 +2,7 @@
 
 ;Vis2.Graphics.Subtitle.Render("Running Test Code... Please wait", "t7000 xCenter y67% p1.35% c88EAB6 r8", "s2.23% cBlack")
 ;Vis2.Graphics.Subtitle.Render("Press [Win] + [c] to highlight and copy anything on-screen.", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
-Vis2.Graphics.Subtitle.Render("Press [F5] to highlight and copy anything on-screen.", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+Vis2.Graphics.Subtitle.Render("Press [F7] to translate the chat when it is displayed", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 ;MsgBox % text := OCR("test.jpg")
 
 ;#c:: OCR()              ; OCR to clipboard
@@ -28,10 +28,10 @@ F7::
 		;MsgBox, Color number %A_Index% is %this_color%.
 		translation:=GoogleTranslate(this_color)
 		translatedArray.Push(translation)
-		strForMsgBox = ocrResults:%text%`r`n===============`r`n%strForMsgBox%`r`n%translation%
+		strForMsgBox = %strForMsgBox%`r`n%translation%
 	}
 	
-	MsgBox %strForMsgBox%
+	MsgBox ocrResults:%text%`r`n===============`r`n%strForMsgBox%
 	
 	return
 	
