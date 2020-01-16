@@ -10,7 +10,8 @@ F5:: MsgBox % OCR()
 F6:: MsgBox % OCR([1300,360,620,400])
 F7::
 	text := OCR([1100,250,820,700])
-	MsgBox ocrResults:%text%
+	;MsgBox ocrResults:%text%
+	Vis2.Graphics.Subtitle.Render("OCR finished running translation", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 	
 	;process the string:
 	;word_array := StrSplit(text,"[Tous]")
@@ -27,7 +28,7 @@ F7::
 		;MsgBox, Color number %A_Index% is %this_color%.
 		translation:=GoogleTranslate(this_color)
 		translatedArray.Push(translation)
-		strForMsgBox = %strForMsgBox%`r`n%translation%
+		strForMsgBox = ocrResults:%text%`r`n===============`r`n%strForMsgBox%`r`n%translation%
 	}
 	
 	MsgBox %strForMsgBox%
