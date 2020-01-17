@@ -20,7 +20,16 @@ F7::
 	;MsgBox lang: %lang%
 	text := OCR([960,250,960,500],lang)
 	
-	;MsgBox ocrResults:%text%
+	;MsgBox ocrResults:before:blankRemoval:%text%
+	; Remove all blank lines from the text in a variable:
+	Loop
+	{
+		text := StrReplace(text, "`r`n`r`n", "`r`n", Count)
+		if Count = 0  ; No more replacements needed.
+			break
+	}
+	;MsgBox ocrResults:after:blankRemoval:%text%
+	
 	ocrFinishedString ="OCR finished with %lang%'s characters, running translation"
 	;MsgBox %ocrFinishedString%
 	Vis2.Graphics.Subtitle.Render(ocrFinishedString, "time: 5000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
