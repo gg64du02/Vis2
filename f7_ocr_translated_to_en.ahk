@@ -4,6 +4,7 @@
 ;Vis2.Graphics.Subtitle.Render("Press [Win] + [c] to highlight and copy anything on-screen.", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 Vis2.Graphics.Subtitle.Render("Press [F6 for rus][F7 for eng] to translate the chat when it is displayed", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 ;MsgBox % text := OCR("test.jpg")
+MsgBox Be aware this script is a prototype and made for 1920*1080 for gta o
 
 ;#c:: OCR()              ; OCR to clipboard
 ;F5:: MsgBox % OCR()    
