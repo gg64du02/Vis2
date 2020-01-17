@@ -2,16 +2,27 @@
 
 ;Vis2.Graphics.Subtitle.Render("Running Test Code... Please wait", "t7000 xCenter y67% p1.35% c88EAB6 r8", "s2.23% cBlack")
 ;Vis2.Graphics.Subtitle.Render("Press [Win] + [c] to highlight and copy anything on-screen.", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
-Vis2.Graphics.Subtitle.Render("Press [F7] to translate the chat when it is displayed", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+Vis2.Graphics.Subtitle.Render("Press [F6 for rus][F7 for eng] to translate the chat when it is displayed", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 ;MsgBox % text := OCR("test.jpg")
 
 ;#c:: OCR()              ; OCR to clipboard
-F5:: MsgBox % OCR()    
-F6:: MsgBox % OCR([1300,360,620,400])
+;F5:: MsgBox % OCR()    
+F6:: 
+	lang ="rus"
+	Vis2.Graphics.Subtitle.Render("Russian ocr-ing", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+	Goto, MyLabel
 F7::
-	text := OCR([1100,250,820,700])
+	;text := OCR([1100,250,820,700])
+	lang ="eng"
+	Vis2.Graphics.Subtitle.Render("English ocr-ing", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+	MyLabel:
+	;MsgBox lang: %lang%
+	text := OCR([960,250,960,500],lang)
+	
 	;MsgBox ocrResults:%text%
-	Vis2.Graphics.Subtitle.Render("OCR finished running translation", "time: 30000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+	ocrFinishedString ="OCR finished with %lang%'s characters, running translation"
+	;MsgBox %ocrFinishedString%
+	Vis2.Graphics.Subtitle.Render(ocrFinishedString, "time: 5000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 	
 	;process the string:
 	;word_array := StrSplit(text,"[Tous]")
