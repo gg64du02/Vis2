@@ -10,7 +10,7 @@ MsgBox Be aware this script is a prototype and made for 1920*1080 for gta o
 ;F5:: MsgBox % OCR()    
 F6:: 
 	lang ="rus"
-	Vis2.Graphics.Subtitle.Render("Russian ocr-ing", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+	Vis2.Graphics.Subtitle.Render("Russian ocr-ing", "time: 10000 xCenter y92% p1.35% cFF8888 r8", "c000000 s2.23%")
 	Goto, MyLabel
 F7::
 	;text := OCR([1100,250,820,700])
@@ -32,7 +32,7 @@ F7::
 	
 	ocrFinishedString ="OCR finished with %lang%'s characters, running translation"
 	;MsgBox %ocrFinishedString%
-	Vis2.Graphics.Subtitle.Render(ocrFinishedString, "time: 5000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
+	Vis2.Graphics.Subtitle.Render(ocrFinishedString, "time: 5000 xCenter y92% p1.35% cFFFFFF r8", "c000000 s2.23%")
 	
 	;process the string:
 	;word_array := StrSplit(text,"[Tous]")
