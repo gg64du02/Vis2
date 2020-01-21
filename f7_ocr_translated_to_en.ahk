@@ -62,21 +62,21 @@ F7::
 	Vis2.Graphics.Subtitle.Render("English ocr-ing", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 	MyLabel:
 	;MsgBox lang: %lang%
-	text := OCR([960,250,960,500],lang)
+	If(widthToScan=""){
+		widthToScan:=960
+		heightToScan:=500
+		topLeftX := 960
+		topLeftY := 250
+		;MsgBox lol11
+	}
+	;text := OCR([960,250,960,500],lang)
+	text := OCR([topLeftX,topLeftY,widthToScan,heightToScan],lang)
 	
-	;widthToScan=960
-	;heightToScan=500
-	widthToScan=700
-	heightToScan=100
 	gui, -border +AlwaysOnTop
 	gui, color, 0xFF44AA
 	gui, show, w%widthToScan% h%heightToScan%,OcrPreviewWindow
 	;sleep, 200
 	WinSet, Transparent, 50, OcrPreviewWindow
-	;topLeftX := 960
-	;topLeftY := 250
-	topLeftX := 30
-	topLeftY := 830
 	WinMove, OcrPreviewWindow, , % topLeftX+2, % topLeftY-2
 	sleep 200
 	Gui, Destroy
