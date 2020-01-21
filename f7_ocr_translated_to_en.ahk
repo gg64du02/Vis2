@@ -8,6 +8,50 @@ MsgBox Be aware this script is a prototype and made for 1920*1080 for gta o
 
 ;#c:: OCR()              ; OCR to clipboard
 ;F5:: MsgBox % OCR()    
+F5::
+	;MsgBox %widthToScan%:%heightToScan%:%topLeftX%:%topLeftY%
+	once:=0
+	If(widthToScan=700){
+		widthToScan:=960
+		heightToScan:=500
+		topLeftX := 960
+		topLeftY := 250
+		;MsgBox lol2
+	}
+	else if(widthToScan=960){
+		widthToScan:=700
+		heightToScan:=100
+		topLeftX := 30
+		topLeftY := 830
+		;MsgBox lol3
+	}
+	If(widthToScan=""){
+		widthToScan:=960
+		heightToScan:=500
+		topLeftX := 960
+		topLeftY := 250
+		;MsgBox lol1
+	}
+	
+	;widthToScan=960
+	;heightToScan=500
+	;widthToScan=700
+	;heightToScan=100
+	;topLeftX := 960
+	;topLeftY := 250
+	;topLeftX := 30
+	;topLeftY := 830
+	gui, -border +AlwaysOnTop
+	gui, color, 0xFF44AA
+	gui, show, w%widthToScan% h%heightToScan%,OcrPreviewWindow
+	;sleep, 200
+	WinSet, Transparent, 50, OcrPreviewWindow
+	WinMove, OcrPreviewWindow, , % topLeftX+2, % topLeftY-2
+	sleep 200
+	;Gui, Destroy
+	WinSet, Transparent, 0, OcrPreviewWindow
+	Vis2.Graphics.Subtitle.Render("switching the area", "time: 10000 xCenter y92% p1.35% cFF8888 r8", "c000000 s2.23%")
+	return
 F6:: 
 	lang ="rus"
 	Vis2.Graphics.Subtitle.Render("Russian ocr-ing", "time: 10000 xCenter y92% p1.35% cFF8888 r8", "c000000 s2.23%")
