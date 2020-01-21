@@ -20,6 +20,19 @@ F7::
 	;MsgBox lang: %lang%
 	text := OCR([960,250,960,500],lang)
 	
+	widthToScan=960
+	heightToScan=500
+	gui, -border +AlwaysOnTop
+	gui, color, 0xFF44AA
+	gui, show, w%widthToScan% h%heightToScan%,OcrPreviewWindow
+	;sleep, 200
+	WinSet, Transparent, 50, OcrPreviewWindow
+	;topLeftX := mouseX
+	;topLeftY := mouseY - heightToScan
+	topLeftX := 960
+	topLeftY := 250
+	WinMove, OcrPreviewWindow, , % topLeftX+2, % topLeftY-2
+		
 	;MsgBox ocrResults:before:blankRemoval:%text%
 	; Remove all blank lines from the text in a variable:
 	Loop
