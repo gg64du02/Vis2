@@ -8,7 +8,7 @@ Vis2.Graphics.Subtitle.Render("Press [F6 for rus][F7 for eng] to translate the c
 
 ;#c:: OCR()              ; OCR to clipboard
 ;F5:: MsgBox % OCR()    
-o::
+;o::
 	;MsgBox %widthToScan%:%heightToScan%:%topLeftX%:%topLeftY%
 	once:=0
 	If(widthToScan=""){
@@ -44,7 +44,7 @@ o::
 	Goto, MyLabel
 ;F7::
 	;text := OCR([1100,250,820,700])
-F6::
+;F6::
 MButton::
 	lang ="eng"
 	Vis2.Graphics.Subtitle.Render("English ocr-ing", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
@@ -60,10 +60,6 @@ MButton::
 	;text := OCR([960,250,960,500],lang)
 	text := OCR([topLeftX,topLeftY,widthToScan,heightToScan],lang)
 	
-	;MsgBox text: %text%
-	AddGps(text)
-	return
-	
 	gui, -border +AlwaysOnTop
 	gui, color, 0xFF44AA
 	gui, show, w%widthToScan% h%heightToScan%,OcrPreviewWindow
@@ -72,6 +68,11 @@ MButton::
 	WinMove, OcrPreviewWindow, , % topLeftX+2, % topLeftY-2
 	sleep 200
 	Gui, Destroy
+	
+	;MsgBox text: %text%
+	AddGps(text)
+	
+	return
 	
 	;MsgBox ocrResults:before:blankRemoval:%text%
 	; Remove all blank lines from the text in a variable:
