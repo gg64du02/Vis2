@@ -50,5 +50,12 @@ MButton::
 	sleep %temps%
 	
 	send insert the new one
+	sleep %temps%
+	
+	;close the menu
+	send {Escape down}
+	sleep %temps%
+	send {Escape up}
+	sleep %temps%
 	
 	return
