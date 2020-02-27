@@ -45,6 +45,7 @@ o::
 ;F7::
 	;text := OCR([1100,250,820,700])
 F6::
+MButton::
 	lang ="eng"
 	Vis2.Graphics.Subtitle.Render("English ocr-ing", "time: 10000 xCenter y92% p1.35% cFFB1AC r8", "c000000 s2.23%")
 	MyLabel:
@@ -59,7 +60,8 @@ F6::
 	;text := OCR([960,250,960,500],lang)
 	text := OCR([topLeftX,topLeftY,widthToScan,heightToScan],lang)
 	
-	MsgBox text: %text%
+	;MsgBox text: %text%
+	AddGps(text)
 	return
 	
 	gui, -border +AlwaysOnTop
@@ -98,7 +100,7 @@ F6::
 	{
 		this_color := word_array[A_Index]
 		;MsgBox, Color number %A_Index% is %this_color%.
-		translation:=GoogleTranslate(this_color)
+		;translation:=GoogleTranslate(this_color)
 		translatedArray.Push(translation)
 		strForMsgBox = %strForMsgBox%`r`n%translation%
 	}
@@ -116,3 +118,59 @@ F6::
 ;MsgBox, % GoogleTranslate("今日の天気はとても良いです")
 ;MsgBox, % GoogleTranslate("Hello, World!", "en", "ru")
 ;MsgBox, % GoogleTranslate(TranslateThis, "en", "ru")
+
+AddGps(str){
+	temps := 100
+
+	;open the k menu
+	sleep %temps%
+	send {k down}
+	sleep %temps%
+	send {k up}
+	sleep %temps%
+	
+	;click on the gps button
+	MouseClick, X1, 1515 , 165 , 1, 0
+	sleep %temps%
+	Click, down
+	sleep %temps%
+	Click, up
+	
+	;click on new from current position
+	MouseClick, X1, 584 , 880 , 1, 0
+	sleep %temps%
+	Click, down
+	sleep %temps%
+	Click, up
+	
+	;click on the gps' name to edit it
+	MouseClick, X1, 940 , 280 , 1, 0
+	sleep %temps%
+	Click, down
+	sleep %temps%
+	Click, up
+	
+	;select everything
+	send {Ctrl down}
+	send {a down}
+	sleep %temps%
+	send {a up}
+	send {Ctrl up}
+	sleep %temps%
+	
+	;remove the text
+	send {Backspace down}
+	sleep %temps%
+	send {Backspace up}
+	sleep %temps%
+	
+	send %str%
+	sleep %temps%
+	
+	;close the menu
+	MouseClick, X1, 1656 , 75 , 1, 0
+	sleep %temps%
+	Click, down
+	sleep %temps%
+	Click, up
+}
